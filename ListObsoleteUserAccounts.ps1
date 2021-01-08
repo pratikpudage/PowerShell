@@ -10,7 +10,7 @@ Email report in HTML format is sent to the predefined recipients and this inform
 
 
 .NOTES
-Author: Pratik Pudage (Pratik.Pudage@hotmail.com)
+Author: Pratik Pudage (PratikPudage80@Gmail.com)
 
 
 .VERSION
