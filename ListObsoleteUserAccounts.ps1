@@ -47,18 +47,27 @@ $Data = Get-ADUser -SearchBase $SearchBase -Properties LastLogonTimeStamp,Distin
  
 select-object Name,Enabled,DistinguishedName,@{Name="LogonTimeStamp"; Expression={[DateTime]::FromFileTime($_.lastLogonTimestamp)}}
 
+
+# HTML Formatting for Email
+$style = $Style + "<style>BODY{font-family: Calibri; font-size: 10pt;}"
+$style = $style + "TABLE{border-collapse: collapse; Width: 100%; }"
+$style = $style + "TH{text-align: center; background: #1bc8e2; padding: 8px; }"
+$style = $style + "TD{text-align: center; background: #f2f2f2; padding: 8px; }"
+$style = $style + "</style>"
+
+
 # Output User name and lastLogonTimestamp into CSV and HTML.
 $Data | Export-Csv $File -notypeinformation
-$Data | ConvertTo-Html |Out-file .\Report.html
+$Data | ConvertTo-Html -Head $Style |Out-file .\Report.html
 
 
-$Output = Get-Content .\Report.html |Out-String
+$Body = Get-Content .\Report.html |Out-String
 
 
 # ::Module to send the email report::
 Send-MailMessage `
+-SmtpServer SMTP.DomainName.com `
 -To Recipient@DomainName.com `
 -From ADHealthChecks@DomainName.com `
 -Subject "Obsolete AD User Account Report for $Date" `
--Body $Output -BodyAsHtml `
--SmtpServer SMTP.DomainName.com
+-Body $Body -BodyAsHtml -Encoding ([System.Text.Encoding]::UTF8)
