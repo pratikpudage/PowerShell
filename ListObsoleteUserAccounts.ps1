@@ -38,7 +38,7 @@ $DaysInactive = 30
 $Time = (Get-Date).Adddays(-($DaysInactive))
 
 # ::Defining the search base::
-$SearchBase = 'DC=Seasons,DC=Local'
+$SearchBase = 'DC=Domain,DC=com'
 
 # ::Defining Exceptions (Exclude specific OU from search criteria)::
 $Exclude1 = '*OU=IT Maintenance,DC=Domain,DC=com'
