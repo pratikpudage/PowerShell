@@ -8,24 +8,24 @@ Connect-AzAccount
 Get-AzSubscription
 
 # Select the Azure subscription that has your Azure Migrate project to work with.
-Set-AzContext -SubscriptionId "3aa14ccc-a82a-4b09-a569-d48d57281fae"
+Set-AzContext -SubscriptionId "Sub_Id"
 
 # Retrive Azure Migrate Project.
-Get-AzMigrateProject -Name Az-Migration -ResourceGroupName COLORG |fl
+Get-AzMigrateProject -Name Az-Migration -ResourceGroupName "RG_Name" |fl
 
 # Get Azure Migrate Discovered VMs
-$DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName Az-Migration -ResourceGroupName COLORG -ApplianceName SHAZ-MG |Select DisplayName,Discovered*
+$DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName Az-Migration -ResourceGroupName "RG_Name" -ApplianceName "AzMigrate_ApplianceName" |Select DisplayName,Discovered*
 
 # Retrieve the replicating VM details by using the discovered VM identifier
 ForEach($DiscoveredServer in $DiscoveredServers){
-$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName Az-Migration -ResourceGroupName COLORG -Filter {$_.MachineName -eq $DiscoveredServer.DisplayName}
+$ReplicatingServer = Get-AzMigrateServerReplication -ProjectName Az-Migration -ResourceGroupName "RG_Name" -Filter {$_.MachineName -eq $DiscoveredServer.DisplayName}
 }
 
 # Retrieve replicating VM details using replicating VM identifier
-$ReplicatingServer = Get-AzMigrateServerReplication -DiscoveredMachineId '205bc835-3b2a-11eb-a7ac-005056977a60'
+$ReplicatingServer = Get-AzMigrateServerReplication -DiscoveredMachineId 'Machine_Id'
 
 -TargetObjectID 205bc835-3b2a-11eb-a7ac-005056977a60
 
 
-Get-AzMigrateDiscoveredServer -ProjectName Az-Migration -ResourceGroupName COLORG
-Get-AzMigrateJob -ProjectName Az-Migration -ResourceGroupName COLORG
+Get-AzMigrateDiscoveredServer -ProjectName Az-Migration -ResourceGroupName "RG_Name"
+Get-AzMigrateJob -ProjectName Az-Migration -ResourceGroupName "RG_Name"
