@@ -1,7 +1,7 @@
 ﻿<#
 .SYNOPSIS 
 Get-ADSecurityAuditLogs.ps1 - Reports AD object changes based on AD Serice Changes Auditing events. 
-The script can be scheduled to run every hour to capture events generated in past 1 hour and send email notification.
+The script can be scheduled to run every hour to capture events generated in past 1 day and send email notification.
  
 .DESCRIPTION  
 This script targets all domain controllers to read the Security events 5136,5137,5139 and 5141.
