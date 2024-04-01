@@ -1,6 +1,6 @@
 ﻿<#
 .SYNOPSIS
-This script facilitates moving of Exchange transaction files (*.log) from specified source and to the desired destination folders. It can be modified to handle different type of file extensions.
+This script facilitates moving of Exchange transaction files (*.log) from specified source and to the desired destination folders.
 
 
 .DESCRIPTION
@@ -9,7 +9,7 @@ The operator will have to provide the date for which the log files should be mov
 
 
 .NOTES
-Author: Pratik Pudage (PratikPudage80@Gmail.com)
+Author: Pratik Pudage (Pratik.Pudage@hotmail.com)
 
 
 .USAGE
