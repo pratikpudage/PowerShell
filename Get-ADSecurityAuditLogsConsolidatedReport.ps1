@@ -116,7 +116,7 @@ $PastTime = (Get-Date).AddDays(-1).ToString('MM/dd/yyy HH:mm tt')
 $CurrentTime = (Get-Date).ToString('MM/dd/yyy HH:mm tt')
 
 # Define servers to check for Security event logs
-$DomainControllers = 'ADSLUSLVDC1' , 'ADSLUSDC04' , 'ADSLUSLVDC2' , 'ADSLUSDC05'
+$DomainControllers = 'DC1' , 'DC2'
 
 # Filter Hashtable for Get-WinEvent cmdlet
 $Filter=@{
