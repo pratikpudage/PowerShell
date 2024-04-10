@@ -207,9 +207,9 @@ Import-Csv .\ConsolidatedSecEvents.csv |Export-Excel .\ConsolidatedADSecReport.x
 
 #Email Report
 Send-MailMessage `
-        -To "ppudage@allieddigital.net" `
-        -From "AlertNotification@allieddigital.net" `
+        -To "sender@domain.com" `
+        -From "recipient@domain.com" `
         -Subject "Consolidated AD Objects Modification Report for ADSL US DCs $PastTime to $CurrentTime" `
-        -SmtpServer "ADSLUSLVEXCH01.allieddigital.net" `
+        -SmtpServer "smtp.domain.com" `
         -BodyAsHTML ($Report |Out-String) -Encoding ([System.Text.Encoding]::UTF8) `
         -Attachments .\ConsolidatedADSecReport.xlsx, .\ConsolidatedSecEvents.html
